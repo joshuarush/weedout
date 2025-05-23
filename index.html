@@ -651,8 +651,6 @@
                     throw new Error(data.error || 'Failed to fetch representatives');
                 }
                 
-                return data;
-                
                 // Extract house and senate information
                 const houseData = data.House?.[0];
                 const senateData = data.Senate?.[0];
