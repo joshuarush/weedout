@@ -704,27 +704,38 @@
             const houseMember = houseData.Member;
             const senateMember = senateData.Member;
             
-            let housePhone = houseMember.phone || '';
-            // Format phone number if it exists
+            // Get phone numbers from the API response
+            let housePhone = houseMember.capitolPhone || '';
+            let formattedHousePhone = '';
+            
+            // Format house phone number if it exists
             if (housePhone) {
                 const cleaned = housePhone.replace(/\D/g, '');
                 const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
                 if (match) {
                     housePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
+                    formattedHousePhone = `Call ${housePhone}`;
                 }
+            } else {
+                housePhone = '512-463-0000';
+                formattedHousePhone = 'Call (512) 463-0000';
             }
-            const formattedHousePhone = housePhone ? `Call ${housePhone}` : '';
             
-            let senatePhone = senateMember.phone || '';
-            // Format phone number if it exists
+            let senatePhone = senateMember.capitolPhone || '';
+            let formattedSenatePhone = '';
+            
+            // Format senate phone number if it exists
             if (senatePhone) {
                 const cleaned = senatePhone.replace(/\D/g, '');
                 const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
                 if (match) {
                     senatePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
+                    formattedSenatePhone = `Call ${senatePhone}`;
                 }
+            } else {
+                senatePhone = '512-463-0000';
+                formattedSenatePhone = 'Call (512) 463-0000';
             }
-            const formattedSenatePhone = senatePhone ? `Call ${senatePhone}` : '';
             
             const repCardsHtml = `
                 <div class="rep-card ${getVoteClass(houseVote)}">
