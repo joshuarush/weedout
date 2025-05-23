@@ -1,7 +1,10 @@
 // Initialize Supabase client
-export const supabase = supabase.createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
+const supabaseUrl = 'YOUR_SUPABASE_URL' || import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY' || import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+export const supabase = window.supabase.createClient(
+  supabaseUrl,
+  supabaseAnonKey
 );
 
 // Function to format phone numbers

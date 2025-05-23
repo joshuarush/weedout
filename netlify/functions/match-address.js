@@ -2,7 +2,13 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
   console.log('Received event:', JSON.stringify(event, null, 2));
-  console.log('Query parameters:', event.queryStringParameters);
+  
+  // Parse query parameters
+  const query = event.queryStringParameters || {};
+  const { address, city, zip, DistType } = query;
+  
+  console.log('Parsed query parameters:', { address, city, zip, DistType });
+  
   // Handle CORS preflight request
   if (event.httpMethod === 'OPTIONS') {
     return {
@@ -16,8 +22,6 @@ exports.handler = async (event, context) => {
     };
   }
 
-  const { address, city, zip, DistType } = event.queryStringParameters || {};
-  
   if (!zip) {
     console.error('Missing zip code in request');
     return {
@@ -28,21 +32,25 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({ 
         error: 'Zip code is required',
-        receivedParams: event.queryStringParameters 
+        receivedQuery: query,
+        allParams: event.queryStringParameters,
+        rawEvent: event
       })
     };
   }
   
-  const params = new URLSearchParams();
-  if (address) params.set('Address', address);
-  if (city) params.set('City', city);
-  params.set('Zip', zip);
-  params.set('DistType', DistType || 'A');
+  // Build the API URL with parameters
+  const apiParams = new URLSearchParams();
+  if (address) apiParams.append('Address', address);
+  if (city) apiParams.append('City', city);
+  apiParams.append('Zip', zip);
+  apiParams.append('DistType', DistType || 'A');
   
-  console.log('Final params:', params.toString());
+  const apiUrl = `https://rws.capitol.texas.gov/api/MatchAddress?${apiParams.toString()}`;
+  console.log('Calling API URL:', apiUrl);
   
   try {
-    const response = await fetch(`https://rws.capitol.texas.gov/api/MatchAddress?${params}`, {
+    const response = await fetch(apiUrl, {
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Referer': 'https://wrm.capitol.texas.gov/',

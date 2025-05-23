@@ -635,21 +635,23 @@
                 
                 // Make the actual API call through Netlify function
                 const functionUrl = new URL('/.netlify/functions/match-address', window.location.origin);
-                functionUrl.search = params.toString();
+                
+                // Add parameters to URL
+                if (streetAddress) functionUrl.searchParams.append('address', streetAddress);
+                if (city) functionUrl.searchParams.append('city', city);
+                functionUrl.searchParams.append('zip', zip);
+                functionUrl.searchParams.append('DistType', 'A');
                 
                 console.log('Calling function URL:', functionUrl.toString());
-                const response = await fetch(functionUrl.toString(), {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-                });
+                const response = await fetch(functionUrl.toString());
+                const data = await response.json();
                 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch representatives');
+                    console.error('API Error:', data);
+                    throw new Error(data.error || 'Failed to fetch representatives');
                 }
                 
-                const data = await response.json();
+                return data;
                 
                 // Extract house and senate information
                 const houseData = data.House?.[0];
