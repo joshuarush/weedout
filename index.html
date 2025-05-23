@@ -633,25 +633,8 @@
                 params.append('Zip', zip);
                 params.append('DistType', 'A');
                 
-                const apiUrl = `https://rws.capitol.texas.gov/api/MatchAddress?${params.toString()}`;
-                
-                // Make the actual API call
-                const response = await fetch(apiUrl, {
-                    headers: {
-                        'Accept': 'application/json, text/plain, */*',
-                        'Accept-Language': 'en-US,en;q=0.5',
-                        'Accept-Encoding': 'gzip, deflate, br, zstd',
-                        'Origin': 'https://wrm.capitol.texas.gov',
-                        'Sec-GPC': '1',
-                        'Connection': 'keep-alive',
-                        'Referer': 'https://wrm.capitol.texas.gov/',
-                        'Sec-Fetch-Dest': 'empty',
-                        'Sec-Fetch-Mode': 'cors',
-                        'Sec-Fetch-Site': 'same-site',
-                        'Priority': 'u=0'
-                    },
-                    mode: 'cors'
-                });
+                // Make the actual API call through Netlify function
+                const response = await fetch(`/.netlify/functions/match-address?${params}`);
                 
                 if (!response.ok) {
                     throw new Error('Failed to fetch representatives');
