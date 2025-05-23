@@ -1,0 +1,1088 @@
+[
+  {
+    "chamber": "H",
+    "district": 1,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 2,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 3,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 4,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 5,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 6,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 7,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 8,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 9,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 10,
+    "party": "R",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 11,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 12,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 13,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 14,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 15,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 16,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 17,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 18,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 19,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 20,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 21,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 22,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 23,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 24,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 25,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 26,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 27,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 28,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 29,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 30,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 31,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 32,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 33,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 34,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 35,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 36,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 37,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 38,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 39,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 40,
+    "party": "D",
+    "vote": 3
+  },
+  {
+    "chamber": "H",
+    "district": 41,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 42,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 43,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 44,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 45,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 46,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 47,
+    "party": "D",
+    "vote": 3
+  },
+  {
+    "chamber": "H",
+    "district": 48,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 49,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 50,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 51,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 52,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 53,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 54,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 55,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 56,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 57,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 58,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 59,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 60,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 61,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 62,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 63,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 64,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 65,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 66,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 67,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 68,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 69,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 70,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 71,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 72,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 73,
+    "party": "R",
+    "vote": 3
+  },
+  {
+    "chamber": "H",
+    "district": 74,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 75,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 76,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 77,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 78,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 79,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 80,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 81,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 82,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 83,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 84,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 85,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 86,
+    "party": "R",
+    "vote": 3
+  },
+  {
+    "chamber": "H",
+    "district": 87,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 88,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 89,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 90,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 91,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 92,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 93,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 94,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 95,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 96,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 97,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 98,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 99,
+    "party": "R",
+    "vote": 3
+  },
+  {
+    "chamber": "H",
+    "district": 100,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 101,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 102,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 103,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 104,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 105,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 106,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 107,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 108,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 109,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 110,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 111,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 112,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 113,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 114,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 115,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 116,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 117,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 118,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 119,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 120,
+    "party": "D",
+    "vote": 3
+  },
+  {
+    "chamber": "H",
+    "district": 121,
+    "party": "R",
+    "vote": 3
+  },
+  {
+    "chamber": "H",
+    "district": 122,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 123,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 124,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 125,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 126,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 127,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 128,
+    "party": "R",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 129,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 130,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 131,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 132,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 133,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 134,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 135,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 136,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 137,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 138,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 139,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "H",
+    "district": 140,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 141,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 142,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 143,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 144,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 145,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 146,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 147,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 148,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 149,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "H",
+    "district": 150,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 1,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 2,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 3,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 4,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 5,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 6,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "S",
+    "district": 7,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 8,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 9,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 10,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 11,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 12,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 13,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 14,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "S",
+    "district": 15,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "S",
+    "district": 16,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 17,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 18,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 19,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 20,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 21,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "S",
+    "district": 22,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 23,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 24,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 25,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 26,
+    "party": "D",
+    "vote": 2
+  },
+  {
+    "chamber": "S",
+    "district": 27,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 28,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 29,
+    "party": "D",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 30,
+    "party": "R",
+    "vote": 1
+  },
+  {
+    "chamber": "S",
+    "district": 31,
+    "party": "R",
+    "vote": 1
+  }
+]
