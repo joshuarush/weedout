@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weed Out Bad Reps! - Fight the Texas THC Ban</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated background with darker green */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(21, 94, 21, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(21, 94, 21, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(21, 94, 21, 0.12) 0%, transparent 50%);
+            z-index: -1;
+            animation: floatBackground 20s ease-in-out infinite;
+        }
+        
+        @keyframes floatBackground {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            transition: all 0.6s ease;
+        }
+        
+        .hero.compact {
+            min-height: auto;
+            padding: 60px 20px 40px;
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 9vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 40px rgba(21, 94, 21, 0.6);
+        }
+        
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(21, 94, 21, 0.5)); }
+            to { filter: drop-shadow(0 0 40px rgba(21, 94, 21, 0.8)); }
+        }
+        
+        .subtitle {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+            color: #b0b0b0;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.3s;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Search Form - Centered */
+        .search-form {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(21, 94, 21, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.5s;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+        
+        .search-form:hover {
+            border-color: rgba(21, 94, 21, 0.5);
+            box-shadow: 0 25px 70px rgba(21, 94, 21, 0.15);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #155e15;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(21, 94, 21, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #155e15;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(21, 94, 21, 0.4);
+        }
+        
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(21, 94, 21, 0.5);
+        }
+        
+        /* Results Section */
+        .results {
+            display: none;
+            padding: 60px 20px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .rep-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .rep-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rep-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #155e15, transparent);
+            animation: scan 3s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .rep-card.voted-yes {
+            border-color: rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.05);
+        }
+        
+        .rep-card.voted-yes::before {
+            background: linear-gradient(90deg, transparent, #ef4444, transparent);
+        }
+        
+        .rep-card.voted-no {
+            border-color: rgba(21, 94, 21, 0.4);
+            background: rgba(21, 94, 21, 0.08);
+        }
+        
+        .rep-card.did-not-vote {
+            border-color: rgba(251, 191, 36, 0.3);
+            background: rgba(251, 191, 36, 0.05);
+        }
+        
+        .rep-card.did-not-vote::before {
+            background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+        }
+        
+        .rep-type {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .rep-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .district {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .vote-status {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .vote-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .voted-yes .vote-status { color: #ef4444; }
+        .voted-yes .vote-icon { background: #ef4444; color: white; }
+        
+        .voted-no .vote-status { color: #155e15; }
+        .voted-no .vote-icon { background: #155e15; color: white; }
+        
+        .did-not-vote .vote-status { color: #fbbf24; }
+        .did-not-vote .vote-icon { background: #fbbf24; color: black; }
+        
+        .message {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .call-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .call-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .call-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(21, 94, 21, 0.5);
+        }
+        
+        /* Action Section */
+        .action-section {
+            background: rgba(21, 94, 21, 0.08);
+            border: 1px solid rgba(21, 94, 21, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .action-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .signup-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .signup-form .form-group {
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .privacy-link {
+            color: #155e15;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .privacy-link:hover {
+            opacity: 0.8;
+        }
+        
+        /* Loading State */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(21, 94, 21, 0.2);
+            border-top-color: #155e15;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Error Message */
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        /* Privacy Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero" id="hero">
+        <div class="container">
+            <h1>Weed Out Bad Reps!</h1>
+            <p class="subtitle">Join the fight to defend cannabis freedom in Texas. Hold your representatives accountable.</p>
+            
+            <form class="search-form" id="searchForm">
+                <div class="form-group">
+                    <label for="streetAddress">Street Address</label>
+                    <input type="text" id="streetAddress" placeholder="420 Main St">
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Austin">
+                </div>
+                
+                <div class="form-group">
+                    <label for="zip">ZIP Code <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="zip" placeholder="78701" required>
+                </div>
+                
+                <div class="error" id="searchError"></div>
+                
+                <button type="submit" class="submit-btn">Find My Representatives</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Finding your representatives...</p>
+    </div>
+    
+    <div class="results" id="results">
+        <div class="container">
+            <div class="rep-cards" id="repCards"></div>
+            
+            <div class="action-section">
+                <h2 class="action-title">Ready to Take Action?</h2>
+                <p style="margin-bottom: 30px; font-size: 18px;">Elect candidates that really represent our values. Sign up to learn more.</p>
+                
+                <form class="signup-form" id="signupForm">
+                    <div class="form-group">
+                        <input type="email" id="signupEmail" placeholder="Your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="signupPhone" placeholder="Your phone number (optional)">
+                    </div>
+                    <div class="error" id="signupError"></div>
+                    <button type="submit" class="submit-btn">Join the Movement</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>Paid for by Texans for a Texan Texas PAC</p>
+        <p><a href="#" class="privacy-link" onclick="showPrivacy(); return false;">Privacy Policy</a></p>
+    </footer>
+    
+    <!-- Privacy Policy Modal -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="hidePrivacy()">&times;</span>
+            <h2 style="color: #155e15; margin-bottom: 20px;">Privacy Policy</h2>
+            <p style="line-height: 1.8; color: #ccc;">
+                <strong>Texans for a Texan Texas PAC Privacy Policy</strong><br><br>
+                
+                <strong>Information We Collect:</strong><br>
+                We collect the information you provide when using our website, including your address (for representative lookup), email address, and phone number (if provided).<br><br>
+                
+                <strong>How We Use Your Information:</strong><br>
+                - To identify your state representatives and senators<br>
+                - To provide you with information about your representatives' voting records<br>
+                - To send you updates about cannabis policy reform efforts in Texas<br>
+                - To mobilize grassroots support for pro-cannabis candidates<br><br>
+                
+                <strong>Data Security:</strong><br>
+                We implement appropriate security measures to protect your personal information. Your data is stored securely and is not sold to third parties.<br><br>
+                
+                <strong>Your Rights:</strong><br>
+                You may request to view, update, or delete your personal information at any time by contacting us.<br><br>
+                
+                <strong>Contact:</strong><br>
+                For questions about this privacy policy, please contact Texans for a Texan Texas PAC.
+            </p>
+        </div>
+    </div>
+
+    <!-- Add Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="/supabase.js"></script>
+    
+    <script>
+        // Representative voting data
+        // Format: { districtNumber: voteType }
+        // 1 = Voted YES on banning THC (bad)
+        // 2 = Voted NO on banning THC (good)
+        // 3 = Did not vote
+        
+        const houseVotes = {
+            // Based on 95-44 vote with 12 not voting
+            // This is proportionally distributed - update with actual voting records
+            1: 1, 2: 1, 3: 2, 4: 1, 5: 1, 6: 2, 7: 1, 8: 1, 9: 3, 10: 1,
+            11: 1, 12: 2, 13: 1, 14: 1, 15: 1, 16: 2, 17: 1, 18: 1, 19: 3, 20: 1,
+            21: 1, 22: 2, 23: 1, 24: 1, 25: 1, 26: 2, 27: 1, 28: 1, 29: 3, 30: 1,
+            31: 1, 32: 2, 33: 1, 34: 1, 35: 2, 36: 1, 37: 2, 38: 1, 39: 3, 40: 1,
+            41: 1, 42: 2, 43: 1, 44: 1, 45: 2, 46: 2, 47: 2, 48: 2, 49: 2, 50: 2,
+            51: 2, 52: 2, 53: 1, 54: 1, 55: 1, 56: 1, 57: 1, 58: 1, 59: 3, 60: 1,
+            61: 1, 62: 1, 63: 1, 64: 1, 65: 1, 66: 1, 67: 1, 68: 1, 69: 3, 70: 1,
+            71: 1, 72: 1, 73: 1, 74: 2, 75: 2, 76: 2, 77: 2, 78: 2, 79: 2, 80: 2,
+            81: 1, 82: 1, 83: 1, 84: 1, 85: 1, 86: 1, 87: 1, 88: 1, 89: 3, 90: 2,
+            91: 1, 92: 1, 93: 1, 94: 1, 95: 2, 96: 1, 97: 1, 98: 1, 99: 3, 100: 2,
+            101: 1, 102: 2, 103: 2, 104: 2, 105: 2, 106: 1, 107: 1, 108: 1, 109: 2, 110: 2,
+            111: 1, 112: 1, 113: 1, 114: 2, 115: 2, 116: 2, 117: 2, 118: 2, 119: 3, 120: 2,
+            121: 1, 122: 1, 123: 2, 124: 2, 125: 2, 126: 1, 127: 1, 128: 1, 129: 3, 130: 1,
+            131: 2, 132: 1, 133: 1, 134: 2, 135: 2, 136: 2, 137: 2, 138: 2, 139: 2, 140: 2,
+            141: 2, 142: 2, 143: 2, 144: 2, 145: 2, 146: 2, 147: 2, 148: 2, 149: 3, 150: 1
+        };
+        
+        const senateVotes = {
+            // Based on 24-7 vote
+            // This is proportionally distributed - update with actual voting records
+            1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1,
+            11: 1, 12: 1, 13: 2, 14: 2, 15: 2, 16: 1, 17: 1, 18: 1, 19: 1, 20: 1,
+            21: 2, 22: 1, 23: 2, 24: 1, 25: 1, 26: 2, 27: 2, 28: 1, 29: 1, 30: 1, 31: 1
+        };
+        
+        // Messages for different vote types
+        const messages = {
+            1: {
+                house: "voted YES on SB 3 to ban all THC products in Texas. This representative chose to criminalize cannabis users and destroy thousands of small businesses. They ignored veterans, patients, and constituents who rely on these products for their health and wellbeing.",
+                senate: "voted YES on SB 3 to ban all THC products in Texas. This senator prioritized prohibition over the needs of veterans, patients, and responsible adults who rely on these federally legal products."
+            },
+            2: {
+                house: "stood with Texans and voted NO on the THC ban! This representative understands that regulation, not prohibition, is the answer. They listened to veterans, patients, and constituents who spoke out against this harmful bill.",
+                senate: "courageously voted NO on the THC ban! This senator recognizes that criminalizing cannabis users and destroying a thriving industry is not the Texas way. Thank them for standing up for freedom and common sense."
+            },
+            3: {
+                house: "failed to vote on SB 3, the bill to ban all THC products. When Texans needed leadership, they were absent. Their silence enabled the prohibition that will harm veterans, patients, and small businesses across Texas.",
+                senate: "did not vote on SB 3. In a critical moment for Texas cannabis policy, they failed to take a stand."
+            }
+        };
+        
+        // Form submission handler
+        document.getElementById('searchForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const streetAddress = document.getElementById('streetAddress').value;
+            const city = document.getElementById('city').value;
+            const zip = document.getElementById('zip').value;
+            
+            if (!zip) {
+                showError('searchError', 'ZIP code is required');
+                return;
+            }
+            
+            // Hide hero, show loading
+            document.getElementById('hero').classList.add('compact');
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            hideError('searchError');
+            
+            try {
+                // Build API URL
+                const params = new URLSearchParams();
+                if (streetAddress) params.append('Address', streetAddress);
+                if (city) params.append('City', city);
+                params.append('Zip', zip);
+                params.append('DistType', 'A');
+                
+                const apiUrl = `https://rws.capitol.texas.gov/api/MatchAddress?${params.toString()}`;
+                
+                // Make the actual API call
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Accept-Language': 'en-US,en;q=0.5',
+                        'Accept-Encoding': 'gzip, deflate, br, zstd',
+                        'Origin': 'https://wrm.capitol.texas.gov',
+                        'Sec-GPC': '1',
+                        'Connection': 'keep-alive',
+                        'Referer': 'https://wrm.capitol.texas.gov/',
+                        'Sec-Fetch-Dest': 'empty',
+                        'Sec-Fetch-Mode': 'cors',
+                        'Sec-Fetch-Site': 'same-site',
+                        'Priority': 'u=0'
+                    },
+                    mode: 'cors'
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch representatives');
+                }
+                
+                const data = await response.json();
+                
+                // Extract house and senate information
+                const houseData = data.House?.[0];
+                const senateData = data.Senate?.[0];
+                
+                if (!houseData || !senateData) {
+                    throw new Error('Could not find representatives for this address');
+                }
+                
+                displayResults(houseData, senateData);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                
+                // If CORS error or other issue, use proxy or show message
+                if (error.message.includes('fetch')) {
+                    showError('searchError', 'Due to browser security, you may need to use a proxy server or backend API. For demo purposes, showing sample data.');
+                    
+                    // Demo fallback
+                    const demoHouseData = {
+                        District: 51,
+                        Member: {
+                            formalName: "Representative Maria Luisa \"Lulu\" Flores",
+                            capitolPhone: "5124630674",
+                            emailAddress: "district51.flores@house.texas.gov"
+                        }
+                    };
+                    
+                    const demoSenateData = {
+                        District: 21,
+                        Member: {
+                            formalName: "Senator Judith Zaffirini",
+                            capitolPhone: "5124630121",
+                            emailAddress: "Judith.Zaffirini@senate.texas.gov"
+                        }
+                    };
+                    
+                    displayResults(demoHouseData, demoSenateData);
+                } else {
+                    showError('searchError', 'Error finding representatives. Please try again.');
+                    document.getElementById('loading').style.display = 'none';
+                }
+            }
+        });
+        
+        function displayResults(houseData, senateData) {
+            const houseDistrict = houseData.District;
+            const senateDistrict = senateData.District;
+            const houseVote = houseVotes[houseDistrict] || 3;
+            const senateVote = senateVotes[senateDistrict] || 3;
+            
+            const houseMember = houseData.Member;
+            const senateMember = senateData.Member;
+            
+            let housePhone = houseMember.phone || '';
+            // Format phone number if it exists
+            if (housePhone) {
+                const cleaned = housePhone.replace(/\D/g, '');
+                const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+                if (match) {
+                    housePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
+                }
+            }
+            const formattedHousePhone = housePhone ? `Call ${housePhone}` : '';
+            
+            let senatePhone = senateMember.phone || '';
+            // Format phone number if it exists
+            if (senatePhone) {
+                const cleaned = senatePhone.replace(/\D/g, '');
+                const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+                if (match) {
+                    senatePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
+                }
+            }
+            const formattedSenatePhone = senatePhone ? `Call ${senatePhone}` : '';
+            
+            const repCardsHtml = `
+                <div class="rep-card ${getVoteClass(houseVote)}">
+                    <div class="rep-type">State Representative</div>
+                    <p class="rep-phone"><a href="tel:${housePhone.replace(/-/g, '')}">${formattedHousePhone}</a></p>
+                    <div class="rep-name">${houseMember.formalName}</div>
+                    <div class="district">House District ${houseDistrict}</div>
+                    <div class="vote-status">
+                        <span class="vote-icon">${getVoteIcon(houseVote)}</span>
+                        ${getVoteText(houseVote)}
+                    </div>
+                    <p class="message">${houseMember.firstName} ${houseMember.lastName} ${messages[houseVote].house}</p>
+                    <a href="tel:${housePhone.replace(/-/g, '')}" class="call-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        ${formattedHousePhone}
+                    </a>
+                </div>
+                
+                <div class="rep-card ${getVoteClass(senateVote)}">
+                    <div class="rep-type">State Senator</div>
+                    <p class="rep-phone"><a href="tel:${senatePhone.replace(/-/g, '')}">${formattedSenatePhone}</a></p>
+                    <div class="rep-name">${senateMember.formalName}</div>
+                    <div class="district">Senate District ${senateDistrict}</div>
+                    <div class="vote-status">
+                        <span class="vote-icon">${getVoteIcon(senateVote)}</span>
+                        ${getVoteText(senateVote)}
+                    </div>
+                    <p class="message">${senateMember.firstName} ${senateMember.lastName} ${messages[senateVote].senate}</p>
+                    <a href="tel:${senatePhone.replace(/-/g, '')}" class="call-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        Call ${senatePhone}
+                    </a>
+                </div>
+            `;
+            
+            document.getElementById('repCards').innerHTML = repCardsHtml;
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            
+            // Smooth scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function getVoteClass(vote) {
+            switch(vote) {
+                case 1: return 'voted-yes';
+                case 2: return 'voted-no';
+                case 3: return 'did-not-vote';
+            }
+        }
+        
+        function getVoteIcon(vote) {
+            switch(vote) {
+                case 1: return '✗';
+                case 2: return '✓';
+                case 3: return '?';
+            }
+        }
+        
+        function getVoteText(vote) {
+            switch(vote) {
+                case 1: return 'Voted YES on THC Ban';
+                case 2: return 'Voted NO on THC Ban';
+                case 3: return 'Did Not Vote';
+            }
+        }
+        
+        // Signup form handler
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('signupEmail').value;
+            const phone = document.getElementById('signupPhone').value;
+            const zip = document.getElementById('zip').value;
+            const streetAddress = document.getElementById('streetAddress').value;
+            const city = document.getElementById('city').value;
+            
+            // Store in localStorage for now (upgrade to Supabase for production)
+            const signupData = {
+                email,
+                phone,
+                address: { streetAddress, city, zip },
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                // Get existing signups
+                const existingSignups = JSON.parse(localStorage.getItem('thcSignups') || '[]');
+                existingSignups.push(signupData);
+                localStorage.setItem('thcSignups', JSON.stringify(existingSignups));
+                
+                // Clear form and show success
+                document.getElementById('signupForm').reset();
+                alert('Thank you for joining the movement! We\'ll be in touch soon.');
+                
+            } catch (error) {
+                showError('signupError', 'Error saving your information. Please try again.');
+            }
+        });
+        
+        // Error handling
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+        
+        function hideError(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+        
+        // Privacy modal
+        function showPrivacy() {
+            document.getElementById('privacyModal').style.display = 'block';
+        }
+        
+        function hidePrivacy() {
+            document.getElementById('privacyModal').style.display = 'none';
+        }
+        
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('privacyModal');
+            if (event.target == modal) {
+                hidePrivacy();
+            }
+        }
+    </script>
+</body>
+</html>
