@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
+  console.log('Received event:', JSON.stringify(event, null, 2));
+  console.log('Query parameters:', event.queryStringParameters);
   // Handle CORS preflight request
   if (event.httpMethod === 'OPTIONS') {
     return {
@@ -14,21 +16,30 @@ exports.handler = async (event, context) => {
     };
   }
 
-  const { address, city, zip } = event.queryStringParameters || {};
+  const { address, city, zip, DistType } = event.queryStringParameters || {};
   
   if (!zip) {
+    console.error('Missing zip code in request');
     return {
       statusCode: 400,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Zip code is required' })
+      headers: { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify({ 
+        error: 'Zip code is required',
+        receivedParams: event.queryStringParameters 
+      })
     };
   }
   
   const params = new URLSearchParams();
-  if (address) params.append('Address', address);
-  if (city) params.append('City', city);
-  params.append('Zip', zip);
-  params.append('DistType', 'A');
+  if (address) params.set('Address', address);
+  if (city) params.set('City', city);
+  params.set('Zip', zip);
+  params.set('DistType', DistType || 'A');
+  
+  console.log('Final params:', params.toString());
   
   try {
     const response = await fetch(`https://rws.capitol.texas.gov/api/MatchAddress?${params}`, {

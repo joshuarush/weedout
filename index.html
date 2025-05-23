@@ -634,7 +634,16 @@
                 params.append('DistType', 'A');
                 
                 // Make the actual API call through Netlify function
-                const response = await fetch(`/.netlify/functions/match-address?${params}`);
+                const functionUrl = new URL('/.netlify/functions/match-address', window.location.origin);
+                functionUrl.search = params.toString();
+                
+                console.log('Calling function URL:', functionUrl.toString());
+                const response = await fetch(functionUrl.toString(), {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
                 
                 if (!response.ok) {
                     throw new Error('Failed to fetch representatives');
