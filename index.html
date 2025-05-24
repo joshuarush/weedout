@@ -652,8 +652,10 @@
                         street_address: streetAddress,
                         city,
                         zip_code: zip,
-                        timestamp: new Date().toISOString()
+                        // No timestamp needed - Supabase automatically sets created_at
                     };
+                    
+                    console.log('Saving address data:', addressData);
                     
                     const { data, error } = await supabase
                         .from('user_entries')
@@ -878,8 +880,8 @@
                         .update({ 
                             email, 
                             phone,
-                            signup_completed: true,
-                            signup_timestamp: new Date().toISOString()
+                            is_signup: true
+                            // created_at is handled automatically by Supabase
                         })
                         .eq('id', currentUserEntryId)
                         .select();
@@ -898,8 +900,8 @@
                             street_address: streetAddress,
                             city,
                             zip_code: zip,
-                            signup_completed: true,
-                            timestamp: new Date().toISOString()
+                            is_signup: true
+                            // created_at is handled automatically by Supabase
                         }])
                         .select();
                 }
