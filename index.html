@@ -29,9 +29,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(21, 94, 21, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(21, 94, 21, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(21, 94, 21, 0.12) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(76, 175, 80, 0.12) 0%, transparent 50%);
             z-index: -1;
             animation: floatBackground 20s ease-in-out infinite;
         }
@@ -67,18 +67,25 @@
         h1 {
             font-size: clamp(3rem, 9vw, 6rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
+            background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 20px;
             animation: glow 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 40px rgba(21, 94, 21, 0.6);
+            text-shadow: 0 0 40px rgba(76, 175, 80, 0.6);
         }
         
+        #thc-hook {
+            display: inline-block; /* Allows min-width to take effect */
+            min-width: 320px;    /* Adjust this value based on the longest hook and font size */
+            text-align: center;   /* Ensures shorter hooks are centered within the min-width */
+            vertical-align: middle; /* Aligns the span nicely with surrounding text */
+        }
+
         @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(21, 94, 21, 0.5)); }
-            to { filter: drop-shadow(0 0 40px rgba(21, 94, 21, 0.8)); }
+            from { filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.5)); }
+            to { filter: drop-shadow(0 0 40px rgba(76, 175, 80, 0.8)); }
         }
         
         .subtitle {
@@ -106,7 +113,7 @@
         .search-form {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(21, 94, 21, 0.3);
+            border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 20px;
             padding: 40px;
             width: 100%;
@@ -119,8 +126,8 @@
         }
         
         .search-form:hover {
-            border-color: rgba(21, 94, 21, 0.5);
-            box-shadow: 0 25px 70px rgba(21, 94, 21, 0.15);
+            border-color: rgba(76, 175, 80, 0.5);
+            box-shadow: 0 25px 70px rgba(76, 175, 80, 0.15);
         }
         
         .form-group {
@@ -130,7 +137,7 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: #155e15;
+            color: #4CAF50;
             font-weight: 600;
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -141,7 +148,7 @@
             width: 100%;
             padding: 15px 20px;
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(21, 94, 21, 0.3);
+            border: 2px solid rgba(76, 175, 80, 0.3);
             border-radius: 10px;
             color: #fff;
             font-size: 16px;
@@ -150,9 +157,9 @@
         
         input:focus {
             outline: none;
-            border-color: #155e15;
+            border-color: #4CAF50;
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(21, 94, 21, 0.4);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
         }
         
         input::placeholder {
@@ -160,40 +167,26 @@
         }
         
         .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
-            color: white;
+            display: inline-block;
+            background: #4CAF50;
+            color: #fff;
+            padding: 18px 35px;
             border: none;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
             position: relative;
             overflow: hidden;
         }
         
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-        
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(21, 94, 21, 0.5);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
         }
         
         /* Results Section */
@@ -233,7 +226,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #155e15, transparent);
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
             animation: scan 3s linear infinite;
         }
         
@@ -252,8 +245,8 @@
         }
         
         .rep-card.voted-no {
-            border-color: rgba(21, 94, 21, 0.4);
-            background: rgba(21, 94, 21, 0.08);
+            border-color: rgba(76, 175, 80, 0.4);
+            background: rgba(76, 175, 80, 0.08);
         }
         
         .rep-card.did-not-vote {
@@ -307,8 +300,8 @@
         .voted-yes .vote-status { color: #ef4444; }
         .voted-yes .vote-icon { background: #ef4444; color: white; }
         
-        .voted-no .vote-status { color: #155e15; }
-        .voted-no .vote-icon { background: #155e15; color: white; }
+        .voted-no .vote-status { color: #4CAF50; }
+        .voted-no .vote-icon { background: #4CAF50; color: white; }
         
         .did-not-vote .vote-status { color: #fbbf24; }
         .did-not-vote .vote-icon { background: #fbbf24; color: black; }
@@ -322,9 +315,9 @@
         .call-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
+            gap: 8px;
+            background-color: #4CAF50;
+            padding: 12px 20px;
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -332,20 +325,15 @@
             transition: all 0.3s ease;
         }
         
-        .call-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-        
         .call-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(21, 94, 21, 0.5);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
         }
         
         /* Action Section */
         .action-section {
-            background: rgba(21, 94, 21, 0.08);
-            border: 1px solid rgba(21, 94, 21, 0.3);
+            background: rgba(76, 175, 80, 0.08);
+            border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 20px;
             padding: 40px;
             text-align: center;
@@ -356,7 +344,7 @@
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #155e15 0%, #0f430f 100%);
+            background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -382,7 +370,7 @@
         }
         
         .privacy-link {
-            color: #155e15;
+            color: #4CAF50;
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
@@ -401,8 +389,8 @@
         .spinner {
             width: 50px;
             height: 50px;
-            border: 3px solid rgba(21, 94, 21, 0.2);
-            border-top-color: #155e15;
+            border: 3px solid rgba(76, 175, 80, 0.2);
+            border-top-color: #4CAF50;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
@@ -465,7 +453,7 @@
     <div class="hero" id="hero">
         <div class="container">
             <h1>Weed Out Bad Reps!</h1>
-            <p class="subtitle">The Texas Legislature banned THC products against the will of 62% of Texans. <br><br><span style="color: #ef4444;">It cost our state 50,000 jobs and $8 billion in economic impact.</span><br><i>How did your representatives vote?</i></p>
+            <p class="subtitle">Your Representatives Just Voted to Take Away Your Right to <span id="thc-hook" style="transition: opacity 0.3s ease-in-out;">safe and legal THC</span></p>
             
             <form class="search-form" id="searchForm">
                 <div class="form-group">
@@ -485,7 +473,7 @@
                 
                 <div class="error" id="searchError"></div>
                 
-                <button type="submit" class="submit-btn">Find My Representatives</button>
+                <button type="submit" class="submit-btn" id="submitBtn">See How Your Reps Voted</button>
             </form>
         </div>
     </div>
@@ -500,19 +488,25 @@
             <div class="rep-cards" id="repCards"></div>
             
             <div class="action-section">
-                <h2 class="action-title">Take Action for Real Change</h2>
-                <p style="margin-bottom: 30px; font-size: 18px;">The legislators who voted for this ban ignored the will of Texans and prioritized politics over people. They passed a law that attacks veterans, fuels the opioid crisis, and undermines personal freedoms. This extreme measure will cost our state nearly $20 million in lost tax revenue by 2027 - money that should be funding our schools and infrastructure.<br><br>The best way to create change is to run for office yourself. The second best is to support primary challengers who will actually represent your values. Whichever way you want to take action, we can help you elect representatives who will stand for smart regulation that protects consumers and ensures product safety instead of pushing harmful bans.<br><br>Enter your information below to learn more about how we can help you take action.<br><br><i>We won't sell your information or share it with third parties</i></p>
+                <h2 class="action-title">Join the Fight to Restore Our Rights</h2>
+                <p>Sign up to get updates, learn about upcoming events, and find out how you can help hold these politicians accountable.</p>
                 
-                <form class="signup-form" id="signupForm">
-                    <div class="form-group">
-                        <input type="email" id="signupEmail" placeholder="Email address" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="signupPhone" placeholder="Phone number (optional)">
+                <form id="signupForm" class="signup-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupEmail">Email Address</label>
+                            <input type="email" id="signupEmail" name="signupEmail" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPhone">Phone Number (Optional)</label>
+                            <input type="tel" id="signupPhone" name="signupPhone" placeholder="(555) 123-4567">
+                        </div>
                     </div>
                     <div class="error" id="signupError"></div>
-                    <button type="submit" class="submit-btn">Stand For Our Values</button>
+                    <button type="submit" class="submit-btn">Help Us Fire These Reps</button>
                 </form>
+                
+                <p class="privacy-info">We respect your privacy. <a href="#" class="privacy-link" onclick="showPrivacy(); return false;">Read our Privacy Policy</a>.</p>
             </div>
         </div>
     </div>
@@ -526,7 +520,7 @@
     <div class="modal" id="privacyModal">
         <div class="modal-content">
             <span class="close-modal" onclick="hidePrivacy()">&times;</span>
-            <h2 style="color: #155e15; margin-bottom: 20px;">Privacy Policy</h2>
+            <h2 style="color: #4CAF50; margin-bottom: 20px;">Privacy Policy</h2>
             <p style="line-height: 1.8; color: #ccc;">
                 <strong>Texans for a Texan Texas PAC Privacy Policy</strong><br><br>
                 
@@ -595,16 +589,16 @@
         // Messages for different vote types
         const messages = {
             1: {
-                house: "voted YES on SB 3, which bans safe & legal THC products in Texas. This vote ignores the will of most Texans and destroys over 50,000 jobs, costs our state $1.6 billion in wages, and wastes law enforcement resources on unenforceable prohibition. It takes away safe, affordable pain relief options for veterans and patients with chronic pain, pushing many toward dangerous alternatives or the black market.",
-                senate: "voted YES on SB 3, which bans safe & legal THC products in Texas. This vote ignores the will of most Texans and destroys over 50,000 jobs, costs our state $1.6 billion in wages, and wastes law enforcement resources on unenforceable prohibition. It takes away safe, affordable pain relief options for veterans and patients with chronic pain, pushing many toward dangerous alternatives or the black market."
+                house: "voted YES on SB 3 to criminalize THC and destroy 50,000 Texas jobs. They sided with Dan Patrick's extreme agenda over veterans who rely on THC for pain relief and PTSD. Now Texans face jail time for products that were legal yesterday.",
+                senate: "voted YES on SB 3 to criminalize THC and destroy 50,000 Texas jobs. They sided with Dan Patrick's extreme agenda over veterans who rely on THC for pain relief and PTSD. Now Texans face jail time for products that were legal yesterday."
             },
             2: {
-                house: "voted NO on SB 3, standing against the ban on safe & legal THC products in Texas. They listened to constituents who support smart regulation that protects consumers, ensures product safety, preserves 50,000 Texas jobs, and maintains critical tax revenue for our communities. They stood up for veterans and patients seeking alternatives to addictive pharmaceuticals.",
-                senate: "voted NO on SB 3, standing against the ban on safe & legal THC products in Texas. They listened to constituents who support smart regulation that protects consumers, ensures product safety, preserves 50,000 Texas jobs, and maintains critical tax revenue for our communities. They stood up for veterans and patients seeking alternatives to addictive pharmaceuticals."
+                house: "voted NO on SB 3, standing with veterans, small businesses, and 62% of Texans who support legal THC. They fought Dan Patrick's criminalization scheme that would jail patients and destroy a $1.9 billion Texas industry.",
+                senate: "voted NO on SB 3, standing with veterans, small businesses, and 62% of Texans who support legal THC. They fought Dan Patrick's criminalization scheme that would jail patients and destroy a $1.9 billion Texas industry."
             },
             3: {
-                house: "did not vote on SB 3, failing to take a stand in a critical moment when Texas banned safe & legal THC products. Their silence enables policies that eliminate 50,000 jobs, cost our state millions in tax revenue, and undermine public safety by forcing Texans to seek unregulated products.",
-                senate: "did not vote on SB 3, failing to take a stand in a critical moment when Texas banned safe & legal THC products. Their silence enables policies that eliminate 50,000 jobs, cost our state millions in tax revenue, and undermine public safety by forcing Texans to seek unregulated products."
+                house: "was ABSENT when Texas needed leadership on SB 3. Their silence let Dan Patrick criminalize THC, betray veterans, and kill 50,000 jobs. Cowardice in the face of extremism is complicity.",
+                senate: "was ABSENT when Texas needed leadership on SB 3. Their silence let Dan Patrick criminalize THC, betray veterans, and kill 50,000 jobs. Cowardice in the face of extremism is complicity."
             }
         };
         
@@ -716,11 +710,11 @@
                 const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
                 if (match) {
                     housePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
-                    formattedHousePhone = `Call ${housePhone}`;
+                    formattedHousePhone = `Call ${houseMember.formalName} Now`;
                 }
             } else {
-                housePhone = '512-463-0000';
-                formattedHousePhone = 'Call (512) 463-0000';
+                housePhone = '512-463-4630';
+                formattedHousePhone = `Call ${houseMember.formalName} Now`;
             }
             
             let senatePhone = senateMember.capitolPhone || '';
@@ -732,11 +726,11 @@
                 const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
                 if (match) {
                     senatePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
-                    formattedSenatePhone = `Call ${senatePhone}`;
+                    formattedSenatePhone = `Call ${senateMember.formalName} Now`;
                 }
             } else {
-                senatePhone = '512-463-0000';
-                formattedSenatePhone = 'Call (512) 463-0000';
+                senatePhone = '512-463-4630';
+                formattedSenatePhone = `Call ${senateMember.formalName} Now`;
             }
             
             const repCardsHtml = `
@@ -772,7 +766,7 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
-                        Call ${senatePhone}
+                        ${formattedSenatePhone}
                     </a>
                 </div>
             `;
@@ -835,7 +829,7 @@
                 
                 // Clear form and show success
                 document.getElementById('signupForm').reset();
-                alert('Thank you for joining the movement! We\'ll be in touch soon.');
+                alert('Thanks for signing up! We\'ll be in touch soon.');
                 
             } catch (error) {
                 showError('signupError', 'Error saving your information. Please try again.');
@@ -853,6 +847,13 @@
             document.getElementById(elementId).style.display = 'none';
         }
         
+        // Initialize map/data
+        function initializeMap() {
+            // Function called after vote data is loaded
+            console.log('Vote data loaded:', { houseVotes, senateVotes });
+            // No specific map initialization needed - data is ready to use when user searches
+        }
+        
         // Privacy modal
         function showPrivacy() {
             document.getElementById('privacyModal').style.display = 'block';
@@ -868,6 +869,34 @@
             if (event.target == modal) {
                 hidePrivacy();
             }
+        }
+        
+        // Dynamic hook text for hero subtitle
+        const hooks = [
+            "safe pain relief",
+            "safe adult recreation",
+            "your health and wellness",
+            "personal liberty",
+            "safe and legal THC" // Final hook
+        ];
+        let currentHookIndex = 0;
+        const thcHookElement = document.getElementById('thc-hook');
+
+        if (thcHookElement) {
+            const cycleHooks = () => {
+                thcHookElement.style.opacity = 0;
+                setTimeout(() => {
+                    if (currentHookIndex < hooks.length) { // Ensure we don't go out of bounds
+                        thcHookElement.textContent = hooks[currentHookIndex];
+                        thcHookElement.style.opacity = 1;
+                        currentHookIndex++;
+                        if (currentHookIndex < hooks.length) { // If not the last hook, set timeout for next change
+                            setTimeout(cycleHooks, 1000); // Change every 1 second
+                        }
+                    } // If currentHookIndex is already at hooks.length, it means the last hook is set and animation stops.
+                }, 300); // Fade out/in duration
+            };
+            setTimeout(cycleHooks, 500); // Start after a brief delay
         }
     </script>
 </body>
