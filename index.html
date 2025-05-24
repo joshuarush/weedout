@@ -77,10 +77,12 @@
         }
         
         #thc-hook {
-            display: inline-block; /* Allows min-width to take effect */
-            min-width: 320px;    /* Adjust this value based on the longest hook and font size */
-            text-align: center;   /* Ensures shorter hooks are centered within the min-width */
-            vertical-align: middle; /* Aligns the span nicely with surrounding text */
+            display: inline;
+            color: #4CAF50;
+            font-weight: 700;
+            padding: 0 2px;
+            position: relative;
+            transition: opacity 0.3s ease-in-out;
         }
 
         @keyframes glow {
@@ -453,7 +455,7 @@
     <div class="hero" id="hero">
         <div class="container">
             <h1>Weed Out Bad Reps!</h1>
-            <p class="subtitle">Your Representatives Just Voted to Take Away Your Right to <span id="thc-hook" style="transition: opacity 0.3s ease-in-out;">safe and legal THC</span></p>
+            <p class="subtitle">Your Texas state representatives just voted to take away your right to <span id="thc-hook" style="transition: opacity 0.3s ease-in-out;">safe and legal THC</span><br><br><i>How did your representatives vote?</i></p>
             
             <form class="search-form" id="searchForm">
                 <div class="form-group">
@@ -489,7 +491,7 @@
             
             <div class="action-section">
                 <h2 class="action-title">Join the Fight to Restore Our Rights</h2>
-                <p>Sign up to get updates, learn about upcoming events, and find out how you can help hold these politicians accountable.</p>
+                <p>Sign up to get updates, learn about upcoming events, and find out how you can help hold these politicians accountable.<br></p>
                 
                 <form id="signupForm" class="signup-form">
                     <div class="form-row">
@@ -505,8 +507,6 @@
                     <div class="error" id="signupError"></div>
                     <button type="submit" class="submit-btn">Help Us Fire These Reps</button>
                 </form>
-                
-                <p class="privacy-info">We respect your privacy. <a href="#" class="privacy-link" onclick="showPrivacy(); return false;">Read our Privacy Policy</a>.</p>
             </div>
         </div>
     </div>
@@ -525,19 +525,19 @@
                 <strong>Texans for a Texan Texas PAC Privacy Policy</strong><br><br>
                 
                 <strong>Information We Collect:</strong><br>
-                We collect the information you provide when using our website, including your address (for representative lookup), email address, and phone number (if provided).<br><br>
+                We collect the information you provide when using our website, including your address, email address, and phone number (if provided).<br><br>
                 
                 <strong>How We Use Your Information:</strong><br>
                 - To identify your state representatives and senators<br>
                 - To provide you with information about your representatives' voting records<br>
-                - To send you updates about cannabis policy reform efforts in Texas<br>
-                - To mobilize grassroots support for pro-cannabis candidates<br><br>
+                - To send you updates about policy reform and political campaign efforts in Texas<br>
+                - To mobilize grassroots support and fundraising for political candidates<br><br>
                 
                 <strong>Data Security:</strong><br>
-                We implement appropriate security measures to protect your personal information. Your data is stored securely and is not sold to third parties.<br><br>
+                We implement appropriate security measures to protect your personal information. Your data is stored securely.<br><br>
                 
                 <strong>Your Rights:</strong><br>
-                You may request to view, update, or delete your personal information at any time by contacting us.<br><br>
+                You may request to view, update, or delete your personal information at any time by contacting Texans for a Texan Texas PAC.<br><br>
                 
                 <strong>Contact:</strong><br>
                 For questions about this privacy policy, please contact Texans for a Texan Texas PAC.
@@ -748,7 +748,7 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
-                        ${formattedHousePhone}
+                        <span>${formattedHousePhone}</span>
                     </a>
                 </div>
                 
@@ -766,7 +766,7 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
-                        ${formattedSenatePhone}
+                        <span>${formattedSenatePhone}</span>
                     </a>
                 </div>
             `;
