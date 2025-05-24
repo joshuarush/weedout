@@ -1,11 +1,25 @@
 // Initialize Supabase client
-const supabaseUrl = 'YOUR_SUPABASE_URL' || import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY' || import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = window.supabase.createClient(
-  supabaseUrl,
-  supabaseAnonKey
-);
+// Log configuration status for debugging (remove in production)
+console.log('Supabase configuration status:', {
+  urlConfigured: !!supabaseUrl,
+  keyConfigured: !!supabaseAnonKey
+});
+
+// Only create client if both URL and key are available
+let supabase = null;
+if (supabaseUrl && supabaseAnonKey) {
+  try {
+    supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+    console.log('Supabase client initialized successfully');
+  } catch (error) {
+    console.error('Error initializing Supabase client:', error);
+  }
+}
+
+export { supabase };
 
 // Function to format phone numbers
 export function formatPhoneNumber(phoneNumber) {
