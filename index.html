@@ -623,6 +623,9 @@
         };
         
         // Form submission handler
+        // Global variable to store the user's search ID for later use in signup
+        let currentUserEntryId = null;
+
         document.getElementById('searchForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -640,6 +643,33 @@
             document.getElementById('loading').style.display = 'block';
             document.getElementById('results').style.display = 'none';
             hideError('searchError');
+            
+            // Save the address data to Supabase if client is initialized
+            if (supabase) {
+                try {
+                    const addressData = {
+                        street_address: streetAddress,
+                        city,
+                        zip_code: zip,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    const { data, error } = await supabase
+                        .from('user_entries')
+                        .insert([addressData])
+                        .select();
+                        
+                    if (error) {
+                        console.error('Error saving address to Supabase:', error);
+                    } else if (data && data.length > 0) {
+                        // Store the ID for later use in signup
+                        currentUserEntryId = data[0].id;
+                        console.log('Address saved with ID:', currentUserEntryId);
+                    }
+                } catch (err) {
+                    console.error('Error in Supabase operation:', err);
+                }
+            }
             
             try {
                 // Build API URL
@@ -827,31 +857,65 @@
         document.getElementById('signupForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            if (!supabase) {
+                console.error('Supabase client is not initialized. Cannot save data.');
+                showError('signupError', 'Database connection error. Please try again later.');
+                return;
+            }
+            
             const email = document.getElementById('signupEmail').value;
             const phone = document.getElementById('signupPhone').value;
-            const zip = document.getElementById('zip').value;
-            const streetAddress = document.getElementById('streetAddress').value;
-            const city = document.getElementById('city').value;
-            
-            // Store in localStorage for now (upgrade to Supabase for production)
-            const signupData = {
-                email,
-                phone,
-                address: { streetAddress, city, zip },
-                timestamp: new Date().toISOString()
-            };
             
             try {
-                // Get existing signups
-                const existingSignups = JSON.parse(localStorage.getItem('thcSignups') || '[]');
-                existingSignups.push(signupData);
-                localStorage.setItem('thcSignups', JSON.stringify(existingSignups));
+                let result;
+                
+                // If we have an ID from the search form, update that record
+                if (currentUserEntryId) {
+                    console.log('Updating existing record:', currentUserEntryId);
+                    result = await supabase
+                        .from('user_entries')
+                        .update({ 
+                            email, 
+                            phone,
+                            signup_completed: true,
+                            signup_timestamp: new Date().toISOString()
+                        })
+                        .eq('id', currentUserEntryId)
+                        .select();
+                } else {
+                    // If no existing ID, create a new record with whatever info we have
+                    const zip = document.getElementById('zip').value;
+                    const streetAddress = document.getElementById('streetAddress').value;
+                    const city = document.getElementById('city').value;
+                    
+                    console.log('Creating new signup record');
+                    result = await supabase
+                        .from('user_entries')
+                        .insert([{
+                            email,
+                            phone,
+                            street_address: streetAddress,
+                            city,
+                            zip_code: zip,
+                            signup_completed: true,
+                            timestamp: new Date().toISOString()
+                        }])
+                        .select();
+                }
+                
+                if (result.error) {
+                    throw result.error;
+                }
+                
+                console.log('Signup saved successfully:', result.data);
                 
                 // Clear form and show success
                 document.getElementById('signupForm').reset();
                 alert('Thanks for signing up! We\'ll be in touch soon.');
+                hideError('signupError');
                 
             } catch (error) {
+                console.error('Error saving signup data:', error);
                 showError('signupError', 'Error saving your information. Please try again.');
             }
         });
