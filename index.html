@@ -570,16 +570,10 @@
     <script type="module" src="/supabase.js"></script>
     
     <script type="module">
-        import { supabase } from '/supabase.js';
-        // Representative voting data
-        // Format: { districtNumber: voteType }
-        // 1 = Voted YES on banning THC (bad)
-        // 2 = Voted NO on banning THC (good)
-        // 3 = Did not vote
-        
-        // Load vote data from JSON file
-        let houseVotes = {};
-        let senateVotes = {};
+        import { supabase, addLead, updateLead, formatPhoneNumber } from '/supabase.js';
+
+        let currentLeadId = null; // Stores the ID of the current lead being worked on
+        let houseVotes, senateVotes;
         
         // Fetch and process the vote data
         fetch('voteValues.json')
@@ -857,69 +851,89 @@
         }
         
         // Signup form handler
-        document.getElementById('signupForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            if (!supabase) {
-                console.error('Supabase client is not initialized. Cannot save data.');
-                showError('signupError', 'Database connection error. Please try again later.');
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            showLoading('signupLoading');
+            hideError('signupError');
+
+            const emailInput = document.getElementById('signupEmail');
+            const phoneInput = document.getElementById('signupPhone');
+            const streetAddressInput = document.getElementById('streetAddress');
+            const cityInput = document.getElementById('city');
+            const zipInput = document.getElementById('zip');
+
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim(); // Storing raw trimmed phone, formatPhoneNumber can be used for display
+            const streetAddress = streetAddressInput.value.trim();
+            const city = cityInput.value.trim();
+            const zip = zipInput.value.trim();
+
+            // Address is mandatory for initial creation or any update action
+            // For initial creation, only zip code is strictly mandatory.
+            // For updates, any field can be updated, but the record must exist.
+            if (!currentLeadId && !zip) { // If creating a new lead, zip is required
+                showError('signupError', 'Please provide at least your Zip Code to get started.');
+                hideLoading('signupLoading');
                 return;
             }
-            
-            const email = document.getElementById('signupEmail').value;
-            const phone = document.getElementById('signupPhone').value;
-            
+            // If updating, and all fields are somehow empty (though form has values), updateLead will handle it.
+            // No specific client-side check here if currentLeadId exists, as user might be clearing fields.
+
+            const leadData = {
+                street_address: streetAddress,
+                city: city,
+                zip_code: zip,
+                email: email, // Pass trimmed email, addLead/updateLead will handle null if empty
+                phone: phone  // Pass trimmed phone
+            };
+
             try {
                 let result;
                 
                 // If we have an ID from the search form, update that record
                 if (currentUserEntryId) {
+                    // No current lead ID, so create a new lead
                     console.log('Updating existing record:', currentUserEntryId);
-                    result = await supabase
-                        .from('user_entries')
-                        .update({ 
-                            email, 
-                            phone,
-                            is_signup: true
-                            // created_at is handled automatically by Supabase
-                        })
-                        .eq('id', currentUserEntryId)
-                        .select();
-                } else {
-                    // If no existing ID, create a new record with whatever info we have
-                    const zip = document.getElementById('zip').value;
-                    const streetAddress = document.getElementById('streetAddress').value;
-                    const city = document.getElementById('city').value;
+                    result = await updateLead(currentUserEntryId, leadData);
                     
-                    console.log('Creating new signup record');
-                    result = await supabase
-                        .from('user_entries')
-                        .insert([{
-                            email,
-                            phone,
-                            street_address: streetAddress,
-                            city,
-                            zip_code: zip,
-                            is_signup: true
-                            // created_at is handled automatically by Supabase
-                        }])
-                        .select();
+                    if (result.error) throw result.error;
+
+                    if (result.data && result.data.id) {
+                        console.log('Lead updated successfully. ID:', result.data.id, 'Data:', result.data);
+                        alert('Your information has been updated.');
+                        // Form remains filled, allowing further edits. 
+                        // To reset: document.getElementById('signupForm').reset(); currentLeadId = null;
+                    } else {
+                        throw new Error("Failed to update lead, no ID returned.");
+                    }
+                } else {
+                    // A lead ID exists, so update the existing lead
+                    console.log('Attempting to create new lead with data:', leadData);
+                    result = await addLead(leadData);
+
+                    if (result.error) throw result.error;
+
+                    if (result.data && result.data.id) {
+                        currentLeadId = result.data.id;
+                        console.log('Lead created successfully. ID:', currentLeadId, 'Data:', result.data);
+                        alert('Your information has been saved. You can add more details (full address, email, phone) or update existing ones, then submit again to save changes.');
+                        // Optionally focus on email/phone if they are empty
+                        if (!streetAddress) streetAddressInput.focus();
+                        else if (!city) cityInput.focus();
+                        else if (!email) emailInput.focus();
+                        else if (!phone) phoneInput.focus();
+                    } else {
+                        throw new Error("Failed to create lead, no ID returned.");
+                    }
                 }
                 
-                if (result.error) {
-                    throw result.error;
-                }
-                
-                console.log('Signup saved successfully:', result.data);
-                
-                // Clear form and show success
-                document.getElementById('signupForm').reset();
-                alert('Thanks for signing up! We\'ll be in touch soon.');
                 hideError('signupError');
-                
+
             } catch (error) {
                 console.error('Error saving signup data:', error);
-                showError('signupError', 'Error saving your information. Please try again.');
+                showError('signupError', `Error: ${error.message || 'Could not save your information. Please try again.'}`);
+            } finally {
+                hideLoading('signupLoading');
             }
         });
         
@@ -931,6 +945,14 @@
         }
         
         function hideError(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+        
+        function showLoading(elementId) {
+            document.getElementById(elementId).style.display = 'block';
+        }
+        
+        function hideLoading(elementId) {
             document.getElementById(elementId).style.display = 'none';
         }
         
