@@ -22,8 +22,7 @@
     <meta name="description" content="Hold politicians accountable for the Texas THC ban." />
     <link rel="apple-touch-icon" href="https://weedoutbadreps.com/logo192.png" />
     <title>Weed Out Bad Reps! - Hold Politicians Accountable for the Texas THC Ban</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Removed duplicate meta charset and viewport -->
     <style>
         * {
             margin: 0;
@@ -40,7 +39,6 @@
             position: relative;
         }
         
-        /* Animated background with darker green */
         body::before {
             content: '';
             position: fixed;
@@ -67,7 +65,6 @@
             padding: 0 20px;
         }
         
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -131,7 +128,6 @@
             }
         }
         
-        /* Search Form - Centered */
         .search-form {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -211,7 +207,6 @@
             box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
         }
         
-        /* Results Section */
         .results {
             display: none;
             padding: 60px 20px;
@@ -352,7 +347,6 @@
             box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
         }
         
-        /* Action Section */
         .action-section {
             background: rgba(76, 175, 80, 0.08);
             border: 1px solid rgba(76, 175, 80, 0.3);
@@ -381,7 +375,6 @@
             margin-bottom: 15px;
         }
         
-        /* Footer */
         .footer {
             padding: 40px 20px;
             text-align: center;
@@ -401,7 +394,6 @@
             opacity: 0.8;
         }
         
-        /* Loading State */
         .loading {
             display: none;
             text-align: center;
@@ -422,7 +414,6 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Error Message */
         .error {
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid rgba(239, 68, 68, 0.3);
@@ -433,7 +424,6 @@
             display: none;
         }
         
-        /* Privacy Modal */
         .modal {
             display: none;
             position: fixed;
@@ -516,7 +506,7 @@
                 <form id="signupForm" class="signup-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="signupEmail">Email Address<br></label>
+                            <label for="signupEmail">Email Address</label>
                             <input type="email" id="signupEmail" name="signupEmail" placeholder="you@example.com" required>
                         </div>
                         <div class="form-group">
@@ -525,7 +515,7 @@
                         </div>
                     </div>
                     <div class="error" id="signupError"></div>
-                    <button type="submit" class="submit-btn">Help Us Fire These Reps</button>
+                    <button type="submit" class="submit-btn" id="signupSubmitBtn">Help Us Fire These Reps</button>
                 </form>
             </div>
         </div>
@@ -533,31 +523,37 @@
     
     <footer class="footer">
         <p>Paid for by Texans for a Texan Texas PAC</p>
-        <p><a href="#" class="privacy-link" onclick="showPrivacy(); return false;">Privacy Policy</a></p>
+        <p><a href="#" class="privacy-link" id="privacyLinkFooter">Privacy Policy</a></p>
     </footer>
     
-    <!-- Privacy Policy Modal -->
     <div class="modal" id="privacyModal">
         <div class="modal-content">
-            <span class="close-modal" onclick="hidePrivacy()">&times;</span>
+            <span class="close-modal" id="closePrivacyModal">×</span>
             <h2 style="color: #4CAF50; margin-bottom: 20px;">Privacy Policy</h2>
             <p style="line-height: 1.8; color: #ccc;">
                 <strong>Texans for a Texan Texas PAC Privacy Policy</strong><br><br>
                 
                 <strong>Information We Collect:</strong><br>
-                We collect the information you provide when using our website, including your address, email address, and phone number (if provided).<br><br>
+                We collect the information you provide when using our website, including your address (street, city, zip code), email address, and phone number (if provided).<br><br>
                 
                 <strong>How We Use Your Information:</strong><br>
-                - To identify your state representatives and senators<br>
-                - To provide you with information about your representatives' voting records<br>
-                - To send you updates about policy reform and political campaign efforts in Texas<br>
-                - To mobilize grassroots support and fundraising for political candidates<br><br>
+                - To identify your state representatives and senators based on the address provided.<br>
+                - To provide you with information about your representatives' voting records on relevant legislation.<br>
+                - If you opt-in by providing your email or phone number, to send you updates about policy reform, political campaign efforts in Texas, upcoming events, and ways to support these efforts.<br>
+                - To mobilize grassroots support and fundraising for political candidates aligned with our mission.<br><br>
                 
-                <strong>Data Security:</strong><br>
-                We implement appropriate security measures to protect your personal information. Your data is stored securely.<br><br>
+                <strong>Data Storage and Security:</strong><br>
+                Your information (address, and if provided, email/phone) is stored in our secure database. We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.<br><br>
                 
+                <strong>Data Sharing:</strong><br>
+                We do not sell your personal information. We may share your information with trusted partners working on similar political advocacy or campaign efforts, under strict confidentiality agreements, to further our shared goals. You will be informed if such sharing specific to a campaign is to occur.<br><br>
+
                 <strong>Your Rights:</strong><br>
-                You may request to view, update, or delete your personal information at any time by contacting Texans for a Texan Texas PAC.<br><br>
+                You have the right to:
+                - Request access to the personal information we hold about you.
+                - Request correction of any inaccurate personal information.
+                - Request deletion of your personal information, subject to any legal or operational retention needs.
+                To exercise these rights, please contact Texans for a Texan Texas PAC.<br><br>
                 
                 <strong>Contact:</strong><br>
                 For questions about this privacy policy, please contact Texans for a Texan Texas PAC.
@@ -565,21 +561,24 @@
         </div>
     </div>
 
-    <!-- Add Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="module" src="/supabase.js"></script>
     
     <script type="module">
         import { supabase, addLead, updateLead, formatPhoneNumber } from '/supabase.js';
 
-        let currentLeadId = null; // Stores the ID of the current lead being worked on
-        let houseVotes, senateVotes;
+        let currentLeadId = null; // Stores the ID of the current lead from campaign_leads table
+        let houseVotes = {};      // Initialize as an empty object
+        let senateVotes = {};     // Initialize as an empty object
         
-        // Fetch and process the vote data
         fetch('voteValues.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
-                // Process the data to separate house and senate votes
                 data.forEach(item => {
                     if (item.chamber === 'H') {
                         houseVotes[item.district] = item.vote;
@@ -587,232 +586,171 @@
                         senateVotes[item.district] = item.vote;
                     }
                 });
-                
-                // After data is loaded, initialize the map
-                initializeMap();
+                console.log('Vote data loaded and processed.');
             })
             .catch(error => {
-                console.error('Error loading vote data:', error);
-                // Fallback to initialize map even if data loading fails
-                initializeMap();
+                console.error('Error loading or processing vote data:', error);
+                // Proceed without vote data or show error to user
+                // For now, just logging, app will still function for address lookup
             });
         
-        // 1 = Voted YES on banning THC (bad)
-        // 2 = Voted NO on banning THC (good)
-        // 3 = Did not vote
-        
-        // Messages for different vote types
         const messages = {
-            1: {
+            1: { // Voted YES on banning THC (bad)
                 house: "voted YES on SB 3 to criminalize THC and destroy 50,000 Texas jobs. They sided with Dan Patrick's extreme agenda over veterans who rely on THC for pain relief and PTSD. Now Texans face jail time for products that were legal yesterday.",
                 senate: "voted YES on SB 3 to criminalize THC and destroy 50,000 Texas jobs. They sided with Dan Patrick's extreme agenda over veterans who rely on THC for pain relief and PTSD. Now Texans face jail time for products that were legal yesterday."
             },
-            2: {
+            2: { // Voted NO on banning THC (good)
                 house: "voted NO on SB 3, standing with veterans, small businesses, and 62% of Texans who support legal THC. They fought Dan Patrick's criminalization scheme that would jail patients and destroy a $1.9 billion Texas industry.",
                 senate: "voted NO on SB 3, standing with veterans, small businesses, and 62% of Texans who support legal THC. They fought Dan Patrick's criminalization scheme that would jail patients and destroy a $1.9 billion Texas industry."
             },
-            3: {
-                house: "was ABSENT when Texas needed leadership on SB 3. Their silence let Dan Patrick criminalize THC, betray veterans, and kill 50,000 jobs. Cowardice in the face of extremism is complicity.",
-                senate: "was ABSENT when Texas needed leadership on SB 3. Their silence let Dan Patrick criminalize THC, betray veterans, and kill 50,000 jobs. Cowardice in the face of extremism is complicity."
+            3: { // Did not vote / Data unavailable
+                house: "was ABSENT or their vote on SB 3 is not recorded here. Their stance on THC criminalization, which could betray veterans and kill 50,000 jobs, should be clarified. Silence in the face of extremism can be complicity.",
+                senate: "was ABSENT or their vote on SB 3 is not recorded here. Their stance on THC criminalization, which could betray veterans and kill 50,000 jobs, should be clarified. Silence in the face of extremism can be complicity."
             }
         };
         
-        // Form submission handler
-        // Global variable to store the user's search ID for later use in signup
-        let currentUserEntryId = null;
-
         document.getElementById('searchForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const streetAddress = document.getElementById('streetAddress').value;
-            const city = document.getElementById('city').value;
-            const zip = document.getElementById('zip').value;
+            const streetAddress = document.getElementById('streetAddress').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const zip = document.getElementById('zip').value.trim();
             
             if (!zip) {
-                showError('searchError', 'ZIP code is required');
+                showError('searchError', 'ZIP code is required.');
                 return;
             }
             
-            // Hide hero, show loading
             document.getElementById('hero').classList.add('compact');
             document.getElementById('loading').style.display = 'block';
             document.getElementById('results').style.display = 'none';
             hideError('searchError');
             
-            // Save the address data to Supabase if client is initialized
+            // Attempt to save initial address data to Supabase
             if (supabase) {
                 try {
-                    const addressData = {
+                    const addressPayload = {
                         street_address: streetAddress,
-                        city,
+                        city: city,
                         zip_code: zip,
-                        // No timestamp needed - Supabase automatically sets created_at
                     };
-                    
-                    console.log('Saving address data:', addressData);
-                    
-                    const { data, error } = await supabase
-                        .from('user_entries')
-                        .insert([addressData])
-                        .select();
+                    console.log('Attempting to save initial address data:', addressPayload);
+                    const { data: leadResult, error: leadError } = await addLead(addressPayload);
                         
-                    if (error) {
-                        console.error('Error saving address to Supabase:', error);
-                    } else if (data && data.length > 0) {
-                        // Store the ID for later use in signup
-                        currentUserEntryId = data[0].id;
-                        console.log('Address saved with ID:', currentUserEntryId);
+                    if (leadError) {
+                        console.error('Error saving initial address to Supabase:', leadError);
+                        // Optionally show a non-critical error to user, or just log it.
+                        // For now, we'll proceed with rep lookup even if this fails.
+                        // showError('searchError', 'Could not save address entry. Please try again.');
+                    } else if (leadResult && leadResult.id) {
+                        currentLeadId = leadResult.id;
+                        console.log('Initial address saved with Lead ID:', currentLeadId);
+                    } else {
+                        console.warn('No ID returned from addLead, or data is null.');
                     }
                 } catch (err) {
-                    console.error('Error in Supabase operation:', err);
+                    console.error('Exception during Supabase addLead operation:', err);
                 }
+            } else {
+                console.warn('Supabase client not available for saving initial address.');
             }
             
+            // Proceed to fetch representatives
             try {
-                // Build API URL
                 const params = new URLSearchParams();
-                if (streetAddress) params.append('Address', streetAddress);
-                if (city) params.append('City', city);
-                params.append('Zip', zip);
-                params.append('DistType', 'A');
+                if (streetAddress) params.append('address', streetAddress);
+                if (city) params.append('city', city);
+                params.append('zip', zip);
+                params.append('DistType', 'A'); // A for All (House and Senate)
                 
-                // Make the actual API call through Netlify function
                 const functionUrl = new URL('/.netlify/functions/match-address', window.location.origin);
+                functionUrl.search = params.toString(); // Simpler way to add params
                 
-                // Add parameters to URL
-                if (streetAddress) functionUrl.searchParams.append('address', streetAddress);
-                if (city) functionUrl.searchParams.append('city', city);
-                functionUrl.searchParams.append('zip', zip);
-                functionUrl.searchParams.append('DistType', 'A');
-                
-                console.log('Calling function URL:', functionUrl.toString());
+                console.log('Calling Netlify function for representatives:', functionUrl.toString());
                 const response = await fetch(functionUrl.toString());
-                const data = await response.json();
                 
                 if (!response.ok) {
-                    console.error('API Error:', data);
-                    throw new Error(data.error || 'Failed to fetch representatives');
+                    const errorData = await response.json().catch(() => ({ error: 'Failed to parse error response' }));
+                    console.error('API Error Response:', errorData);
+                    throw new Error(errorData.error || `Failed to fetch representatives. Status: ${response.status}`);
                 }
                 
-                // Extract house and senate information
+                const data = await response.json();
+                
                 const houseData = data.House?.[0];
                 const senateData = data.Senate?.[0];
                 
                 if (!houseData || !senateData) {
-                    throw new Error('Could not find representatives for this address');
+                    throw new Error('Could not find representative data for this address.');
                 }
                 
                 displayResults(houseData, senateData);
                 
             } catch (error) {
-                console.error('Error:', error);
-                
-                // If CORS error or other issue, use proxy or show message
-                if (error.message.includes('fetch')) {
-                    showError('searchError', 'Due to browser security, you may need to use a proxy server or backend API. For demo purposes, showing sample data.');
-                    
-                    // Demo fallback
-                    const demoHouseData = {
-                        District: 51,
-                        Member: {
-                            formalName: "Representative Maria Luisa \"Lulu\" Flores",
-                            capitolPhone: "5124630674",
-                            emailAddress: "district51.flores@house.texas.gov"
-                        }
-                    };
-                    
-                    const demoSenateData = {
-                        District: 21,
-                        Member: {
-                            formalName: "Senator Judith Zaffirini",
-                            capitolPhone: "5124630121",
-                            emailAddress: "Judith.Zaffirini@senate.texas.gov"
-                        }
-                    };
-                    
-                    displayResults(demoHouseData, demoSenateData);
-                } else {
-                    showError('searchError', 'Error finding representatives. Please try again.');
-                    document.getElementById('loading').style.display = 'none';
-                }
+                console.error('Error fetching representatives:', error);
+                showError('searchError', `Error finding representatives: ${error.message}. Please check the address or try again.`);
+                document.getElementById('loading').style.display = 'none';
+                // Optionally, display demo data if critical error like CORS, or just show error.
             }
         });
         
         function displayResults(houseData, senateData) {
             const houseDistrict = houseData.District;
             const senateDistrict = senateData.District;
-            const houseVote = houseVotes[houseDistrict] || 3;
+            
+            // Use default vote '3' (Did not vote/Unknown) if district not in loaded data
+            const houseVote = houseVotes[houseDistrict] || 3; 
             const senateVote = senateVotes[senateDistrict] || 3;
             
             const houseMember = houseData.Member;
             const senateMember = senateData.Member;
             
-            // Get phone numbers from the API response
-            let housePhone = houseMember.capitolPhone || '';
-            let formattedHousePhone = '';
-            
-            // Format house phone number if it exists
-            if (housePhone) {
-                const cleaned = housePhone.replace(/\D/g, '');
-                const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-                if (match) {
-                    housePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
-                    formattedHousePhone = `Call ${houseMember.formalName} Now`;
+            const formatPhoneForDisplay = (phone) => {
+                if (!phone) return 'N/A';
+                const cleaned = phone.replace(/\D/g, '');
+                if (cleaned.length === 10) { // Standard US 10-digit phone
+                    return `(${cleaned.substring(0,3)}) ${cleaned.substring(3,6)}-${cleaned.substring(6,10)}`;
+                } else if (cleaned.length === 7 && houseMember.capitolPhone.startsWith('463')) { // Capitol extension style 463-xxxx
+                     return `(512) ${cleaned.substring(0,3)}-${cleaned.substring(3,7)}`;
                 }
-            } else {
-                housePhone = '512-463-4630';
-                formattedHousePhone = `Call ${houseMember.formalName} Now`;
-            }
-            
-            let senatePhone = senateMember.capitolPhone || '';
-            let formattedSenatePhone = '';
-            
-            // Format senate phone number if it exists
-            if (senatePhone) {
-                const cleaned = senatePhone.replace(/\D/g, '');
-                const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-                if (match) {
-                    senatePhone = `(${match[1]}) ${match[2]}-${match[3]}`;
-                    formattedSenatePhone = `Call ${senateMember.formalName} Now`;
-                }
-            } else {
-                senatePhone = '512-463-4630';
-                formattedSenatePhone = `Call ${senateMember.formalName} Now`;
-            }
-            
+                return phone; // Return original if not standard
+            };
+
+            const housePhoneDisplay = formatPhoneForDisplay(houseMember.capitolPhone);
+            const senatePhoneDisplay = formatPhoneForDisplay(senateMember.capitolPhone);
+
+            const houseTelLink = houseMember.capitolPhone ? `tel:${houseMember.capitolPhone.replace(/\D/g, '')}` : '#';
+            const senateTelLink = senateMember.capitolPhone ? `tel:${senateMember.capitolPhone.replace(/\D/g, '')}` : '#';
+
             const repCardsHtml = `
                 <div class="rep-card ${getVoteClass(houseVote)}">
                     <div class="rep-type">State Representative</div>
-                    <p class="rep-phone"><a href="tel:512${housePhone.replace(/-/g, '')}">${formattedHousePhone}</a></p>
                     <div class="rep-name">${houseMember.formalName}</div>
                     <div class="district">House District ${houseDistrict}</div>
+                    <p>Phone: <a href="${houseTelLink}">${housePhoneDisplay}</a></p>
                     <div class="vote-status">
                         <span class="vote-icon">${getVoteIcon(houseVote)}</span>
                         ${getVoteText(houseVote)}
                     </div>
-                    <p class="message">${houseMember.firstName} ${houseMember.lastName} ${messages[houseVote].house}</p>
-                    <a href="tel:512${housePhone.replace(/-/g, '')}" class="call-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
+                    <p class="message">${houseMember.firstName || 'Your Representative'} ${houseMember.lastName || ''} ${messages[houseVote].house}</p>
+                    <a href="${houseTelLink}" class="call-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         <span>Call Your Representative</span>
                     </a>
                 </div>
                 
                 <div class="rep-card ${getVoteClass(senateVote)}">
                     <div class="rep-type">State Senator</div>
-                    <p class="rep-phone"><a href="tel:512${senatePhone.replace(/-/g, '')}">${formattedSenatePhone}</a></p>
                     <div class="rep-name">${senateMember.formalName}</div>
                     <div class="district">Senate District ${senateDistrict}</div>
+                     <p>Phone: <a href="${senateTelLink}">${senatePhoneDisplay}</a></p>
                     <div class="vote-status">
                         <span class="vote-icon">${getVoteIcon(senateVote)}</span>
                         ${getVoteText(senateVote)}
                     </div>
-                    <p class="message">${senateMember.firstName} ${senateMember.lastName} ${messages[senateVote].senate}</p>
-                    <a href="tel:512${senatePhone.replace(/-/g, '')}" class="call-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
+                    <p class="message">${senateMember.firstName || 'Your Senator'} ${senateMember.lastName || ''} ${messages[senateVote].senate}</p>
+                    <a href="${senateTelLink}" class="call-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         <span>Call Your Senator</span>
                     </a>
                 </div>
@@ -821,8 +759,6 @@
             document.getElementById('repCards').innerHTML = repCardsHtml;
             document.getElementById('loading').style.display = 'none';
             document.getElementById('results').style.display = 'block';
-            
-            // Smooth scroll to results
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
         }
         
@@ -830,15 +766,15 @@
             switch(vote) {
                 case 1: return 'voted-yes';
                 case 2: return 'voted-no';
-                case 3: return 'did-not-vote';
+                default: return 'did-not-vote'; // Catches 3 and any other unexpected values
             }
         }
         
         function getVoteIcon(vote) {
             switch(vote) {
-                case 1: return '✗';
-                case 2: return '✓';
-                case 3: return '?';
+                case 1: return '✗'; // Against cannabis
+                case 2: return '✓'; // For cannabis
+                default: return '?';
             }
         }
         
@@ -846,137 +782,100 @@
             switch(vote) {
                 case 1: return 'Voted YES on THC Ban';
                 case 2: return 'Voted NO on THC Ban';
-                case 3: return 'Did Not Vote';
+                default: return 'Did Not Vote / Unknown';
             }
         }
         
-        // Signup form handler
         document.getElementById('signupForm').addEventListener('submit', async function(event) {
             event.preventDefault();
-            showLoading('signupLoading');
+            const signupSubmitBtn = document.getElementById('signupSubmitBtn');
+            signupSubmitBtn.disabled = true;
+            signupSubmitBtn.textContent = 'Submitting...';
             hideError('signupError');
 
-            const emailInput = document.getElementById('signupEmail');
-            const phoneInput = document.getElementById('signupPhone');
-            const streetAddressInput = document.getElementById('streetAddress');
-            const cityInput = document.getElementById('city');
-            const zipInput = document.getElementById('zip');
+            const email = document.getElementById('signupEmail').value.trim();
+            const phone = document.getElementById('signupPhone').value.trim();
 
-            const email = emailInput.value.trim();
-            const phone = phoneInput.value.trim(); // Storing raw trimmed phone, formatPhoneNumber can be used for display
-            const streetAddress = streetAddressInput.value.trim();
-            const city = cityInput.value.trim();
-            const zip = zipInput.value.trim();
-
-            // Address is mandatory for initial creation or any update action
-            // For initial creation, only zip code is strictly mandatory.
-            // For updates, any field can be updated, but the record must exist.
-            if (!currentLeadId && !zip) { // If creating a new lead, zip is required
-                showError('signupError', 'Please provide at least your Zip Code to get started.');
-                hideLoading('signupLoading');
+            if (!email && !phone) {
+                showError('signupError', 'Please provide either an email or a phone number.');
+                signupSubmitBtn.disabled = false;
+                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
                 return;
             }
-            // If updating, and all fields are somehow empty (though form has values), updateLead will handle it.
-            // No specific client-side check here if currentLeadId exists, as user might be clearing fields.
 
-            const leadData = {
-                street_address: streetAddress,
-                city: city,
-                zip_code: zip,
-                email: email, // Pass trimmed email, addLead/updateLead will handle null if empty
-                phone: phone  // Pass trimmed phone
-            };
+            if (!currentLeadId) {
+                showError('signupError', 'Please search for your address first before signing up. This helps us associate your contact info correctly.');
+                signupSubmitBtn.disabled = false;
+                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
+                return;
+            }
 
+            if (!supabase) {
+                showError('signupError', 'Service temporarily unavailable. Please try again later.');
+                signupSubmitBtn.disabled = false;
+                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
+                return;
+            }
+            
             try {
-                let result;
-                
-                // If we have an ID from the search form, update that record
-                if (currentUserEntryId) {
-                    // No current lead ID, so create a new lead
-                    console.log('Updating existing record:', currentUserEntryId);
-                    result = await updateLead(currentUserEntryId, leadData);
-                    
-                    if (result.error) throw result.error;
+                const contactPayload = {};
+                if (email) contactPayload.email = email;
+                if (phone) contactPayload.phone = phone; // Pass raw phone, Supabase function handles it
 
-                    if (result.data && result.data.id) {
-                        console.log('Lead updated successfully. ID:', result.data.id, 'Data:', result.data);
-                        alert('Your information has been updated.');
-                        // Form remains filled, allowing further edits. 
-                        // To reset: document.getElementById('signupForm').reset(); currentLeadId = null;
-                    } else {
-                        throw new Error("Failed to update lead, no ID returned.");
-                    }
+                console.log('Attempting to update lead with contact info. Lead ID:', currentLeadId, 'Payload:', contactPayload);
+                const { data, error } = await updateLead(currentLeadId, contactPayload);
+
+                if (error) {
+                    console.error('Error updating lead with contact info:', error);
+                    showError('signupError', `Failed to save your contact information: ${error.message}. Please try again.`);
                 } else {
-                    // A lead ID exists, so update the existing lead
-                    console.log('Attempting to create new lead with data:', leadData);
-                    result = await addLead(leadData);
-
-                    if (result.error) throw result.error;
-
-                    if (result.data && result.data.id) {
-                        currentLeadId = result.data.id;
-                        console.log('Lead created successfully. ID:', currentLeadId, 'Data:', result.data);
-                        alert('Your information has been saved. You can add more details (full address, email, phone) or update existing ones, then submit again to save changes.');
-                        // Optionally focus on email/phone if they are empty
-                        if (!streetAddress) streetAddressInput.focus();
-                        else if (!city) cityInput.focus();
-                        else if (!email) emailInput.focus();
-                        else if (!phone) phoneInput.focus();
-                    } else {
-                        throw new Error("Failed to create lead, no ID returned.");
-                    }
+                    console.log('Contact information updated successfully:', data);
+                    alert('Thank you for signing up! Your contact information has been saved.');
+                    document.getElementById('signupForm').reset(); // Clear the form
                 }
-                
-                hideError('signupError');
-
-            } catch (error) {
-                console.error('Error saving signup data:', error);
-                showError('signupError', `Error: ${error.message || 'Could not save your information. Please try again.'}`);
+            } catch (err) {
+                console.error('Exception during Supabase updateLead operation:', err);
+                showError('signupError', 'An unexpected error occurred. Please try again.');
             } finally {
-                hideLoading('signupLoading');
+                signupSubmitBtn.disabled = false;
+                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
             }
         });
         
-        // Error handling
         function showError(elementId, message) {
             const errorElement = document.getElementById(elementId);
-            errorElement.textContent = message;
-            errorElement.style.display = 'block';
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
         }
         
         function hideError(elementId) {
-            document.getElementById(elementId).style.display = 'none';
+            const errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
         }
         
-        function showLoading(elementId) {
-            document.getElementById(elementId).style.display = 'block';
+        // Privacy Modal Logic
+        const privacyModal = document.getElementById('privacyModal');
+        const privacyLinkFooter = document.getElementById('privacyLinkFooter');
+        const closeModalButton = document.getElementById('closePrivacyModal');
+
+        if (privacyLinkFooter) {
+            privacyLinkFooter.onclick = function(e) {
+                e.preventDefault();
+                if (privacyModal) privacyModal.style.display = 'block';
+            }
         }
-        
-        function hideLoading(elementId) {
-            document.getElementById(elementId).style.display = 'none';
+        if (closeModalButton) {
+            closeModalButton.onclick = function() {
+                if (privacyModal) privacyModal.style.display = 'none';
+            }
         }
-        
-        // Initialize map/data
-        function initializeMap() {
-            // Function called after vote data is loaded
-            console.log('Vote data loaded:', { houseVotes, senateVotes });
-            // No specific map initialization needed - data is ready to use when user searches
-        }
-        
-        // Privacy modal
-        function showPrivacy() {
-            document.getElementById('privacyModal').style.display = 'block';
-        }
-        
-        function hidePrivacy() {
-            document.getElementById('privacyModal').style.display = 'none';
-        }
-        
-        // Close modal on outside click
         window.onclick = function(event) {
-            const modal = document.getElementById('privacyModal');
-            if (event.target == modal) {
-                hidePrivacy();
+            if (event.target == privacyModal) {
+                if (privacyModal) privacyModal.style.display = 'none';
             }
         }
         
@@ -986,7 +885,7 @@
             "safe\u00A0adult\u00A0recreation",
             "your\u00A0health\u00A0and\u00A0wellness",
             "personal\u00A0liberty",
-            "safe\u00A0and\u00A0legal\u00A0THC" // Final hook
+            "safe\u00A0and\u00A0legal\u00A0THC"
         ];
         let currentHookIndex = 0;
         const thcHookElement = document.getElementById('thc-hook');
@@ -995,17 +894,13 @@
             const cycleHooks = () => {
                 thcHookElement.style.opacity = 0;
                 setTimeout(() => {
-                    if (currentHookIndex < hooks.length) { // Ensure we don't go out of bounds
-                        thcHookElement.textContent = hooks[currentHookIndex];
-                        thcHookElement.style.opacity = 1;
-                        currentHookIndex++;
-                        if (currentHookIndex < hooks.length) { // If not the last hook, set timeout for next change
-                            setTimeout(cycleHooks, 1000); // Change every 1 second
-                        }
-                    } // If currentHookIndex is already at hooks.length, it means the last hook is set and animation stops.
-                }, 300); // Fade out/in duration
+                    thcHookElement.textContent = hooks[currentHookIndex];
+                    thcHookElement.style.opacity = 1;
+                    currentHookIndex = (currentHookIndex + 1) % hooks.length; // Loop through hooks
+                    setTimeout(cycleHooks, currentHookIndex === 0 ? 2500 : 1000); // Pause longer on the last hook
+                }, 300);
             };
-            setTimeout(cycleHooks, 500); // Start after a brief delay
+            setTimeout(cycleHooks, 500);
         }
     </script>
 </body>
