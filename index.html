@@ -499,75 +499,14 @@
         <div class="container">
             <div class="rep-cards" id="repCards"></div>
             
-            <div class="action-section">
-                <h2 class="action-title">Join the Fight to Restore Our Rights</h2>
-                <p>Sign up to get updates, learn about upcoming events, and find out how you can help hold these politicians accountable.<br></p>
-                
-                <form id="signupForm" class="signup-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="signupEmail">Email Address</label>
-                            <input type="email" id="signupEmail" name="signupEmail" placeholder="you@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupPhone">Phone Number (Optional)</label>
-                            <input type="tel" id="signupPhone" name="signupPhone" placeholder="(555) 123-4567">
-                        </div>
-                    </div>
-                    <div class="error" id="signupError"></div>
-                    <button type="submit" class="submit-btn" id="signupSubmitBtn">Help Us Fire These Reps</button>
-                </form>
-            </div>
+
         </div>
     </div>
     
     <footer class="footer">
-        <p>Paid for by Texans for a Texan Texas PAC</p>
-        <p><a href="#" class="privacy-link" id="privacyLinkFooter">Privacy Policy</a></p>
     </footer>
-    
-    <div class="modal" id="privacyModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closePrivacyModal">×</span>
-            <h2 style="color: #4CAF50; margin-bottom: 20px;">Privacy Policy</h2>
-            <p style="line-height: 1.8; color: #ccc;">
-                <strong>Texans for a Texan Texas PAC Privacy Policy</strong><br><br>
-                
-                <strong>Information We Collect:</strong><br>
-                We collect the information you provide when using our website, including your address (street, city, zip code), email address, and phone number (if provided).<br><br>
-                
-                <strong>How We Use Your Information:</strong><br>
-                - To identify your state representatives and senators based on the address provided.<br>
-                - To provide you with information about your representatives' voting records on relevant legislation.<br>
-                - If you opt-in by providing your email or phone number, to send you updates about policy reform, political campaign efforts in Texas, upcoming events, and ways to support these efforts.<br>
-                - To mobilize grassroots support and fundraising for political candidates aligned with our mission.<br><br>
-                
-                <strong>Data Storage and Security:</strong><br>
-                Your information (address, and if provided, email/phone) is stored in our secure database. We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.<br><br>
-                
-                <strong>Data Sharing:</strong><br>
-                We do not sell your personal information. We may share your information with trusted partners working on similar political advocacy or campaign efforts, under strict confidentiality agreements, to further our shared goals. You will be informed if such sharing specific to a campaign is to occur.<br><br>
 
-                <strong>Your Rights:</strong><br>
-                You have the right to:
-                - Request access to the personal information we hold about you.
-                - Request correction of any inaccurate personal information.
-                - Request deletion of your personal information, subject to any legal or operational retention needs.
-                To exercise these rights, please contact Texans for a Texan Texas PAC.<br><br>
-                
-                <strong>Contact:</strong><br>
-                For questions about this privacy policy, please contact Texans for a Texan Texas PAC.
-            </p>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script type="module" src="/supabase.js"></script>
-    
     <script type="module">
-        import { supabase, addLead, updateLead, formatPhoneNumber } from '/supabase.js';
-
-        let currentLeadId = null; // Stores the ID of the current lead from campaign_leads table
         let houseVotes = {};      // Initialize as an empty object
         let senateVotes = {};     // Initialize as an empty object
         
@@ -626,34 +565,7 @@
             document.getElementById('results').style.display = 'none';
             hideError('searchError');
             
-            // Attempt to save initial address data to Supabase
-            if (supabase) {
-                try {
-                    const addressPayload = {
-                        street_address: streetAddress,
-                        city: city,
-                        zip_code: zip,
-                    };
-                    console.log('Attempting to save initial address data:', addressPayload);
-                    const { data: leadResult, error: leadError } = await addLead(addressPayload);
-                        
-                    if (leadError) {
-                        console.error('Error saving initial address to Supabase:', leadError);
-                        // Optionally show a non-critical error to user, or just log it.
-                        // For now, we'll proceed with rep lookup even if this fails.
-                        // showError('searchError', 'Could not save address entry. Please try again.');
-                    } else if (leadResult && leadResult.id) {
-                        currentLeadId = leadResult.id;
-                        console.log('Initial address saved with Lead ID:', currentLeadId);
-                    } else {
-                        console.warn('No ID returned from addLead, or data is null.');
-                    }
-                } catch (err) {
-                    console.error('Exception during Supabase addLead operation:', err);
-                }
-            } else {
-                console.warn('Supabase client not available for saving initial address.');
-            }
+            // Address lookup logic
             
             // Proceed to fetch representatives
             try {
@@ -784,61 +696,7 @@
             }
         }
         
-        document.getElementById('signupForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const signupSubmitBtn = document.getElementById('signupSubmitBtn');
-            signupSubmitBtn.disabled = true;
-            signupSubmitBtn.textContent = 'Submitting...';
-            hideError('signupError');
 
-            const email = document.getElementById('signupEmail').value.trim();
-            const phone = document.getElementById('signupPhone').value.trim();
-
-            if (!email && !phone) {
-                showError('signupError', 'Please provide either an email or a phone number.');
-                signupSubmitBtn.disabled = false;
-                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
-                return;
-            }
-
-            if (!currentLeadId) {
-                showError('signupError', 'Please search for your address first before signing up. This helps us associate your contact info correctly.');
-                signupSubmitBtn.disabled = false;
-                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
-                return;
-            }
-
-            if (!supabase) {
-                showError('signupError', 'Service temporarily unavailable. Please try again later.');
-                signupSubmitBtn.disabled = false;
-                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
-                return;
-            }
-            
-            try {
-                const contactPayload = {};
-                if (email) contactPayload.email = email;
-                if (phone) contactPayload.phone = phone; // Pass raw phone, Supabase function handles it
-
-                console.log('Attempting to update lead with contact info. Lead ID:', currentLeadId, 'Payload:', contactPayload);
-                const { data, error } = await updateLead(currentLeadId, contactPayload);
-
-                if (error) {
-                    console.error('Error updating lead with contact info:', error);
-                    showError('signupError', `Failed to save your contact information: ${error.message}. Please try again.`);
-                } else {
-                    console.log('Contact information updated successfully:', data);
-                    alert('Thank you for signing up! Your contact information has been saved.');
-                    document.getElementById('signupForm').reset(); // Clear the form
-                }
-            } catch (err) {
-                console.error('Exception during Supabase updateLead operation:', err);
-                showError('signupError', 'An unexpected error occurred. Please try again.');
-            } finally {
-                signupSubmitBtn.disabled = false;
-                signupSubmitBtn.textContent = 'Help Us Fire These Reps';
-            }
-        });
         
         function showError(elementId, message) {
             const errorElement = document.getElementById(elementId);
@@ -855,27 +713,7 @@
             }
         }
         
-        // Privacy Modal Logic
-        const privacyModal = document.getElementById('privacyModal');
-        const privacyLinkFooter = document.getElementById('privacyLinkFooter');
-        const closeModalButton = document.getElementById('closePrivacyModal');
 
-        if (privacyLinkFooter) {
-            privacyLinkFooter.onclick = function(e) {
-                e.preventDefault();
-                if (privacyModal) privacyModal.style.display = 'block';
-            }
-        }
-        if (closeModalButton) {
-            closeModalButton.onclick = function() {
-                if (privacyModal) privacyModal.style.display = 'none';
-            }
-        }
-        window.onclick = function(event) {
-            if (event.target == privacyModal) {
-                if (privacyModal) privacyModal.style.display = 'none';
-            }
-        }
         
         // Dynamic hook text for hero subtitle
         const hooks = [
